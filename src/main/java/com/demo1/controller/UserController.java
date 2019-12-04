@@ -3,13 +3,10 @@ package com.demo1.controller;
 import com.demo1.pojo.User;
 import com.demo1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -23,6 +20,13 @@ public class UserController {
     @GetMapping("/{id}")
     public User queryById(@PathVariable("id") Long id) {
         return this.userService.queryById(id);
+    }
+
+    @Value("${server.port}")
+    String port;
+    @RequestMapping("/hi")
+    public String home(@RequestParam String name) {
+        return "hi "+name+",i am from port:" +port;
     }
 }
 

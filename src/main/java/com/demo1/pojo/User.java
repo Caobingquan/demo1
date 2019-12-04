@@ -7,6 +7,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author Binquan.Cao
+ *
+ */
+
 @Table(name = "tb_user")
 public class User implements Serializable {
 
